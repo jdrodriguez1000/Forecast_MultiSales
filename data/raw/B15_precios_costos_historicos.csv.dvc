@@ -1,0 +1,5 @@
+outs:
+- md5: cc3d346f6c3394e21a8e29520749c29f
+  size: 733671
+  hash: md5
+  path: B15_precios_costos_historicos.csv

@@ -1,0 +1,5 @@
+outs:
+- md5: 4409056ae7cc01dd2127fa1c1f13e67e
+  size: 14487443
+  hash: md5
+  path: B20_ventas_diarias.csv

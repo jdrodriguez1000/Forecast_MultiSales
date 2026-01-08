@@ -1,0 +1,5 @@
+outs:
+- md5: 2b89fcc894c00d99ae00679137d15253
+  size: 1897
+  hash: md5
+  path: B10_categorias_productos.csv
