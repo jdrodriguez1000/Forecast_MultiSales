@@ -14,6 +14,7 @@ paths:
   final_features: "data/final/dataset_features.csv"
   models_dir: "models/"
   outputs_dir: "outputs/forecasts/"
+  outputs_reports: "outputs/reports/"
 
 # --- 2. Parámetros del Forecast (Reglas de Negocio) ---
 forecast_params:

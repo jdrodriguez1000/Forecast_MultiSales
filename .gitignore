@@ -13,6 +13,9 @@ venv/
 *.tar.gz
 .env
 
+# Directorio temporales
+tmp/
+
 # Archivos para mlflow
 mlruns/
 
@@ -57,7 +60,7 @@ data/raw/*.csv
 data/external/*.csv
 
 # Archivos tipos json
-01_data_loader/reports/*.json
+outputs/reports/*.json
 
 # Archivos tipo png
 01_data_loader/visualizations/*.png
