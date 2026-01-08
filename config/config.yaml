@@ -97,5 +97,5 @@ transformation_params:
   new_col_activity: "dias_con_venta"
 
 storage_options:
-  engine: "pyarrow"
+  engine: "fastparquet"
   compression: "snappy"
