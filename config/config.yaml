@@ -67,3 +67,35 @@ umbral_outliers: 1.5
 business_rules:
   inactivity_limit_days: 60  # Umbral para considerar un producto como "muerto" o descontinuado
   min_price_allowed: 0.01      # Precio mínimo aceptable
+
+
+# Configuración del Proyecto de Forecasting - Transformación Mensual
+paths:
+  interim_data: "data/interim"
+  processed_data: "data/processed"
+  # Archivos de entrada específicos
+  files:
+    ventas: "df_ventas_imputed.csv"
+    precios: "df_precios_imputed.csv"
+  output_file: "ventas_mensuales_final.parquet"
+
+column_mapping:
+  # Llaves para el Merge y Agregación
+  date_col: "fecha"
+  id_col: "producto_id"
+  
+  # Variable objetivo (en df_ventas_imputed)
+  target_col: "ventas_diarias"
+  
+  # Variables financieras (en df_precios_imputed)
+  financial_cols:
+    - "precio_venta_unitario"
+    - "costo_unitario"
+
+transformation_params:
+  resample_freq: "MS"           # Month Start
+  new_col_activity: "dias_con_venta"
+
+storage_options:
+  engine: "pyarrow"
+  compression: "snappy"
