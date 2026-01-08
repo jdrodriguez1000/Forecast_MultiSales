@@ -1,0 +1,63 @@
+# Archivos y directorios generados por Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.env/
+venv/
+.venv/  # Directorio para entornos virtuales (como el que estamos usando)
+*.egg-info/
+*.zip
+*.tar.gz
+.env
+
+# Archivos para mlflow
+mlruns/
+
+# Archivo y carpetas para el modelo catboost
+notebooks/catboost_info/
+
+# Archivos específicos de entornos de desarrollo (IDE)
+.vscode/        # Archivos de configuración de VS Code
+.idea/          # Archivos de configuración de IntelliJ/PyCharm
+*.swp           # Archivos de swap de Vim
+*.swo
+
+# Cache y configuracion de DVC
+.dvc/tmp/
+.dvc/cache/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/ # Checkpoints automáticos de Jupyter
+jupyter_notebook_config.py # Configuración de Jupyter
+prueba.ipynb
+workbench.ipynb
+final.ipynb
+
+# Archivos de configuración y credenciales (si los hubiera)
+.env                # Archivos de variables de entorno (para secretos)
+*.ini               # Archivos de configuración
+*.cfg               # Archivos de configuración
+credentials.json    # Evitar subir credenciales
+config.yaml         # Si contiene información sensible
+
+# Archivos del sistema operativo
+.DS_Store           # macOS
+Thumbs.db           # Windows
+
+
+# ==============================================================================
+# Ignorar Artefactos del Módulo de Pronóstico (Producción)
+# ==============================================================================
+
+# Archivos de datos
+data/raw/*.csv
+data/external/*.csv
+
+# Archivos tipos json
+01_data_loader/reports/*.json
+
+# Archivos tipo png
+01_data_loader/visualizations/*.png

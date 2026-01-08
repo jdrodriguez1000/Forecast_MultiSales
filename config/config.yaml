@@ -1,0 +1,54 @@
+# =============================================================================
+# CONFIGURACIÓN MAESTRA DEL PROYECTO DE FORECASTING
+# =============================================================================
+
+project_name: "Forecasting_Ventas_100_Productos"
+version: "1.0.0"
+
+# --- 1. Rutas de Archivos (Paths) ---
+paths:
+  raw_sales: "data/raw/B20_ventas_diarias.csv"
+  raw_prices: "data/raw/B15_precios_costos_historicos.csv"
+  raw_categories: "data/raw/B10_categorias_productos.csv"
+  processed_data: "data/processed/ventas_mensuales.csv"
+  final_features: "data/final/dataset_features.csv"
+  models_dir: "models/"
+  outputs_dir: "outputs/forecasts/"
+
+# --- 2. Parámetros del Forecast (Reglas de Negocio) ---
+forecast_params:
+  frequency: "M"               # Mensual
+  horizon: 6                   # Predicción de X+1 a X+6
+  gap: 1                       # Latencia del mes X (no se usa información del mes actual)
+  target_col: "ventas_unidades"
+  date_col: "fecha"
+  id_col: "producto_id"
+
+# --- 3. Definición de Variables (Features) ---
+features:
+  categorical:
+    - "nombre_categoria"
+    - "tipo_demanda"
+    - "promocion_activa"
+    - "campana_marketing"
+  numerical:
+    - "precio_venta_unitario"
+    - "costo_unitario"
+    - "margen_porcentaje"
+  lags: [2, 3, 4, 6, 12]       # Nota: Empiezan en 2 por el GAP del mes X
+
+# --- 4. Segmentación ABC (Fase 3) ---
+segmentation:
+  method: "revenue_contribution"
+  thresholds:
+    cat_a: 0.80                # Productos que generan el 80% de las ventas
+    cat_b: 0.15                # El siguiente 15%
+    cat_c: 0.05                # El 5% restante (cola larga)
+
+# --- 5. Métricas de Evaluación ---
+evaluation:
+  primary_metric: "WAPE"
+  secondary_metrics:
+    - "MAE"
+    - "RMSE"
+    - "BIAS"
